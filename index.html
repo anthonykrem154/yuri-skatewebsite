@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yuriy Mikheyev — Professional Figure Skating & Hockey Power Skating Coach</title>
+  <meta name="description" content="Elite ice sports training in Brooklyn, NY — Figure Skating technique, Hockey Power Skating, edge work, stride mechanics, speed & agility. Private & group lessons by Yuriy Mikheyev." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='78'>⛸️</text></svg>">
+  <style>
+    :root{
+      --bg1:#eaf6ff;            /* light ice */
+      --bg2:#ffffff;            /* white */
+      --bg3:#cfe8ff;            /* soft blue */
+      --ink:#0d2a44;            /* dark navy text */
+      --muted:#4e6b8a;
+      --accent:#50c4ff;         /* ice blue */
+      --accent2:#9fe6ff;
+      --line:#d7e7f7;
+      --card:#ffffffcc;         /* glass */
+      --shadow:0 18px 40px rgba(9,36,66,.12);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%;scroll-behavior:smooth;color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial}
+    body{background:radial-gradient(1200px 800px at 10% -10%, var(--bg3), transparent 60%), linear-gradient(180deg, var(--bg1), var(--bg2));}
+    a{color:inherit}
+
+    /* Frosted container */
+    .container{max-width:1180px;margin:0 auto;padding:0 20px}
+    .card{background:var(--card);backdrop-filter:saturate(1.3) blur(10px);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+
+    /* Header */
+    header{position:sticky;top:0;z-index:60;background:linear-gradient(180deg,#ffffffee,#ffffff99);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,#d9f1ff,#b8e8ff);border:1px solid var(--line);box-shadow:var(--shadow)}
+    .brand h1{font-size:16px;margin:0;letter-spacing:.4px}
+    .nav a.btn{padding:10px 14px;border:1px solid var(--line);border-radius:12px;text-decoration:none}
+
+    /* Hero */
+    .hero{position:relative;overflow:hidden}
+    .hero::before{content:"";position:absolute;inset:-10%;background:radial-gradient(800px 400px at 80% 0%, rgba(159,230,255,.35), transparent 60%);pointer-events:none}
+    .hero-wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:28px;padding:64px 0}
+    .badge{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:#fff9}
+    h2.title{font-size:clamp(28px,4.2vw,48px);line-height:1.08;margin:12px 0 10px}
+    .sub{color:var(--muted)}
+    .act{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+    .btn{padding:12px 16px;border:1px solid var(--line);border-radius:14px;text-decoration:none;display:inline-flex;gap:8px;align-items:center;background:#fff}
+    .btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));border:0;color:#06324f;box-shadow:0 8px 20px rgba(80,196,255,.35)}
+
+
+    .hero-visual{background:url('https://nycskatecoach.com/resources/ura%20aviator.png') center/cover no-repeat}
+
+    /* Sections */
+    section{padding:28px 0}
+    h3{margin:0 0 14px;font-size:24px}
+
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .service{padding:18px}
+
+    .info-grid{display:grid;grid-template-columns:1fr;gap:14px}
+    .kv{display:grid;grid-template-columns:24px 1fr;gap:10px;align-items:start}
+    .kv strong{display:block}
+
+    /* Hours */
+    .hours{display:grid;grid-template-columns:1fr auto;gap:10px;padding:8px 0;border-bottom:1px dashed var(--line)}
+    .open-pill{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:8px 12px;border:1px solid var(--line);background:#fff}
+    .open{color:#0a8a49} .closed{color:#b11d1d}
+
+    /* Map */
+    .map{height:340px;border-radius:18px;overflow:hidden;border:1px solid var(--line)}
+
+    /* Testimonials */
+    .testi{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .quote{padding:18px}
+    .quote p{margin:0}
+
+    /* Footer */
+    .footer{border-top:1px solid var(--line);padding:18px 0 36px;color:#5f7d9c;text-align:center}
+
+    /* Floating CTA */
+    .cta-float{position:fixed;right:18px;bottom:18px;z-index:70}
+    .cta-float button{padding:14px 18px;border-radius:999px;border:0;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#06324f;font-weight:600;box-shadow:0 12px 30px rgba(80,196,255,.45);cursor:pointer}
+    .cta-float button:hover{transform:translateY(-2px)}
+
+    /* Reveal animations */
+    .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease, transform .6s ease}
+    .revealed{opacity:1;transform:none}
+
+/* Responsive adjustments */
+@media (max-width:980px){
+  .hero-wrap {
+    grid-template-columns: 1fr;
+    padding: 40px 0;
+    text-align: center;
+  }
+  .hero-visual {
+    height: 280px;
+    border-radius: 14px;
+  }
+  .act {
+    justify-content: center;
+  }
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .nav a.btn {
+    width: 100%;
+    text-align: center;
+  }
+  .grid-3,
+  .testi {
+    grid-template-columns: 1fr;
+  }
+  .quote {
+    text-align: center;
+  }
+  .gallery {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .gallery img {
+    width: 80px;
+    height: 80px;
+  }
+  .cta-float button {
+    padding: 14px 20px;
+    font-size: 15px;
+  }
+}
+
+    .gallery {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.gallery figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 13px;
+  color: #4e6b8a;
+  font-style: italic;
+}
+
+.gallery img {
+  width: 95px;
+  height: 95px;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  border: 1px solid #d7e7f7;
+}
+
+.gallery img:hover {
+  transform: scale(1.08);
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 200;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  align-items: center;
+  justify-content: center;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 14px;
+  box-shadow: 0 0 25px rgba(255,255,255,0.5);
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 32px;
+  color: #fff;
+  cursor: pointer;
+}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo">⛸️</div>
+        <h1>Yuriy Mikheyev — Skating Coach</h1>
+      </div>
+      <nav style="display:flex;gap:10px;flex-wrap:wrap">
+        <a class="btn" href="#services">Programs</a>
+        <a class="btn" href="#about">About</a>
+        <a class="btn" href="#schedule">Hours</a>
+        <a class="btn" href="#location">Location</a>
+        <a class="btn" href="#reviews">Testimonials</a>
+        <a class="btn" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-wrap">
+        <div class="reveal">
+          <span class="badge">⭐ <strong>5.02</strong> Google reviews</span>
+          <h2 class="title">Professional Figure Skating & Hockey Power Skating Coach</h2>
+          <p class="sub">Technique • Edge Work • Stride Mechanics • Speed • Agility • On/Off‑Ice Training</p>
+          <div class="act">
+            <a class="btn btn-primary" href="tel:+16464096738">📞 Call (646) 409‑6738</a>
+            <a class="btn" id="shareBtn">🔗 Share</a>
+            <a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=3159+Flatbush+Ave,+Brooklyn,+NY+11234" target="_blank" rel="noopener">🧭 Directions</a>
+            <button class="btn" id="saveBtn" type="button">🔖 Save</button>
+          </div>
+          <div class="act" style="margin-top:12px">
+            <span id="openStatus" class="open-pill">Checking hours…</span>
+          </div>
+          <div class="card" style="margin-top:16px;padding:16px">
+            <div class="info-grid">
+              <div class="kv"><div>📍</div><div>
+                <strong>Address</strong>
+                <div>3159 Flatbush Ave, Brooklyn, NY 11234</div>
+                <a href="#location" style="color:#0d5b86">View map</a>
+              </div></div>
+              <div class="kv"><div>⏱️</div><div>
+                <strong>Typical drive</strong>
+                <div>~10 min (Get There)</div>
+              </div></div>
+
+            </div>
+          </div>
+        </div>
+        <figure class="hero-visual card reveal" aria-label="Hero image placeholder"></figure>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="reveal">
+      <div class="container">
+        <h3>Programs & Focus Areas</h3>
+        <div class="grid-3">
+          <article class="card service">
+            <div style="font-weight:700;margin-bottom:6px">Figure Skating Technique</div>
+            <p>Edges, turns, transitions, spins, jump prep, body alignment, artistry and performance confidence.</p>
+          </article>
+          <article class="card service">
+            <div style="font-weight:700;margin-bottom:6px">Hockey Power Skating</div>
+            <p>Stride efficiency, acceleration mechanics, edge control, crossover speed, agility & change of direction.</p>
+          </article>
+          <article class="card service">
+            <div style="font-weight:700;margin-bottom:6px">Off‑Ice Conditioning</div>
+            <p>Mobility, core & strength work, jump mechanics, stability and injury‑resistant movement patterns.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="reveal">
+      <div class="container">
+        <h3>About Yuriy</h3>
+        <div class="card" style="padding:18px">
+          <p>“Experience elite ice sports training with Yuriy Mikheyev, a professional figure skating and hockey power skating coach. Located at a premier sports complex in Brooklyn, this is your destination for mastering the ice. Yuriy brings a wealth of expertise to athletes of all levels, helping them to enhance their technique, speed, and agility. Whether you're pursuing competitive figure skating or looking to improve your hockey skills, a tailored coaching approach is available to help you achieve your goals. Elevate your performance with world-class instruction in a dedicated training environment.”</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOURS -->
+    <section id="schedule" class="reveal">
+      <div class="container">
+        <h3>Hours</h3>
+        <div id="hoursList" class="card" style="padding:16px"></div>
+      </div>
+    </section>
+
+    <!-- LOCATION -->
+    <section id="location" class="reveal">
+      <div class="container">
+        <h3>Location</h3>
+        <div class="map card">
+          <iframe title="Map to 3159 Flatbush Ave" width="100%" height="100%" style="border:0" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=3159%20Flatbush%20Ave%2C%20Brooklyn%2C%20NY%2011234&output=embed"></iframe>
+        </div>
+        <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=3159+Flatbush+Ave,+Brooklyn,+NY+11234">🧭 Get Directions</a>
+          <a class="btn" href="tel:+16464096738">📞 Call Now</a>
+          <a class="btn" id="smsBtn" href="sms:+16464096738">📲 Send to Phone</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="reviews" class="reveal">
+      <div class="container">
+        <h3>Testimonials</h3>
+        <div class="testi">
+          <blockquote class="card quote"><p>“Coach Yuriy transformed my stride and edges in just a few sessions. Game‑changing!”<br><small>— Jayden Kadel</small></p></blockquote>
+          <blockquote class="card quote"><p>“Our daughter’s spins and jump entries improved dramatically. Highly recommend.”<br><small>— Marina Kyanisa</small></p></blockquote>
+          <blockquote class="card quote"><p>“Professional, patient, and precise. The off‑ice drills made a huge difference.”<br><small>— Max Kremyanskiy</small></p></blockquote>
+        </div>
+      </div>
+      
+<div class="gallery">
+  <figure>
+    <img src="https://nycskatecoach.com/resources/20251005_183420.jpg" alt="Skating photo 1" onclick="openModal(this)">
+    <figcaption>(click to expand)</figcaption>
+  </figure>
+  <figure>
+    <img src="https://nycskatecoach.com/resources/fixed.png" alt="Skating photo 2" onclick="openModal(this)">
+    <figcaption>(click to expand)</figcaption>
+  </figure>
+  <figure>
+    <img src="https://nycskatecoach.com/resources/20251005_183803.jpg" alt="Skating photo 3" onclick="openModal(this)">
+    <figcaption>(click to expand)</figcaption>
+  </figure>
+  <figure>
+    <img src="https://nycskatecoach.com/resources/20251005_183818.jpg" alt="Skating photo 4" onclick="openModal(this)">
+    <figcaption>(click to expand)</figcaption>
+  </figure>
+</div>
+
+<div class="modal" id="imgModal">
+  <span class="close-btn" onclick="closeModal()">&times;</span>
+  <img id="modalImg" src="" alt="Expanded image">
+</div>
+
+<script>
+function openModal(img){
+  const modal=document.getElementById('imgModal');
+  const modalImg=document.getElementById('modalImg');
+  modalImg.src=img.src;
+  modal.classList.add('active');
+}
+function closeModal(){
+  document.getElementById('imgModal').classList.remove('active');
+}
+</script>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="reveal">
+      <div class="container">
+        <h3>Book a Session</h3>
+        <div class="card" style="padding:18px">
+          <form id="bookForm" onsubmit="return false" style="display:grid;gap:12px">
+            <div style="display:grid;gap:6px">
+              <label for="name">Name</label>
+              <input id="name" required placeholder="Your full name" style="padding:12px;border-radius:12px;border:1px solid var(--line)" />
+            </div>
+            <div style="display:grid;gap:6px">
+              <label for="email">Email</label>
+              <input id="email" type="email" required placeholder="you@email.com" style="padding:12px;border-radius:12px;border:1px solid var(--line)" />
+            </div>
+            <div style="display:grid;gap:6px">
+              <label for="msg">Message</label>
+              <textarea id="msg" rows="4" placeholder="Your goals • Preferred times • Program of interest" style="padding:12px;border-radius:12px;border:1px solid var(--line)"></textarea>
+            </div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <button class="btn btn-primary" id="sendBtn" type="submit">✉️ Send Inquiry</button>
+              <a class="btn" href="mailto:yuriy@example.com?subject=Lesson%20Inquiry&body=Hi%20Yuriy,%0D%0A%0D%0AMy%20goals%3A%20...%0D%0APreferred%20times%3A%20...">Open Email App</a>
+            </div>
+            <p id="formNote" style="color:#5f7d9c;margin:0"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">© <span id="year"></span> Yuriy Mikheyev — Professional Figure Skating & Hockey Power Skating Coach • Brooklyn, NY</footer>
+
+  <!-- Floating CTA -->
+  <div class="cta-float"><button id="bookBtn">❄️ Book Lesson</button></div>
+
+  <script>
+    // ===== Business Data =====
+    const BUSINESS = {
+      name: 'Yuriy Mikheyev — Professional Figure Skating & Hockey Power Skating Coach',
+      phone: '+1-646-409-6738',
+      address: '3159 Flatbush Ave, Brooklyn, NY 11234',
+      hours: {
+        Sunday:   [['08:00','10:00']],
+        Monday:   [['13:00','18:20']],
+        Tuesday:  [['13:00','17:20']],
+        Wednesday:[['13:00','18:20']],
+        Thursday: [['09:00','17:00']],
+        Friday:   [['13:00','17:20']],
+        Saturday: [['08:00','11:00']],
+      }
+    };
+
+    const tz = 'America/New_York'; // business timezone for "Open now"
+    const $ = s=>document.querySelector(s);
+
+    // ===== Hours rendering & Open/Closed =====
+    function pad(n){return String(n).padStart(2,'0')}
+    function parseHM(hm){const [h,m]=hm.split(':').map(Number);return {h,m}}
+    function inRange(now, start, end){
+      const s=parseHM(start), e=parseHM(end);
+      const a=new Date(now); a.setHours(s.h, s.m, 0, 0);
+      const b=new Date(now); b.setHours(e.h, e.m, 0, 0);
+      return now>=a && now<=b;
+    }
+    function isOpenNow(){
+      const now = new Date(new Date().toLocaleString('en-US',{timeZone: tz}));
+      const day = now.toLocaleDateString('en-US',{weekday:'long', timeZone: tz});
+      const ranges = BUSINESS.hours[day] || [];
+      let open=false, until=null;
+      for(const [s,e] of ranges){ if(inRange(now,s,e)){ open=true; until=e } }
+      return {open, until, now, day, ranges};
+    }
+    function fmtSlot(s,e){
+      const opt={hour:'numeric',minute:'2-digit'}; const d=new Date();
+      const [sh,sm]=s.split(':').map(Number); const [eh,em]=e.split(':').map(Number);
+      const a=new Date(d); a.setHours(sh,sm,0,0); const b=new Date(d); b.setHours(eh,em,0,0);
+      return new Intl.DateTimeFormat('en-US',opt).format(a)+" – "+new Intl.DateTimeFormat('en-US',opt).format(b);
+    }
+    function renderHours(){
+      const box = document.getElementById('hoursList');
+      const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+      const today = new Date(new Date().toLocaleString('en-US',{timeZone: tz})).getDay();
+      box.innerHTML = days.map((d,i)=>{
+        const ranges = BUSINESS.hours[d]||[];
+        const pretty = ranges.length? ranges.map(([s,e])=> fmtSlot(s,e)).join(', ') : 'Closed';
+        const mark = i===today? 'style="font-weight:700"' : '';
+        return `<div class="hours" ${mark}><div>${d}</div><div>${pretty}</div></div>`;
+      }).join('');
+    }
+    function updateOpenStatus(){
+      const s = document.getElementById('openStatus');
+      const {open, until} = isOpenNow();
+      if(open){ s.innerHTML = `✅ <span class="open">Open now</span>${until? ' • until '+fmtSlot(until, until).split('–')[0]:''}`; }
+      else{ s.innerHTML = `⛔ <span class="closed">Closed</span> • Hours vary by day`; }
+    }
+
+    // ===== UI actions =====
+    // Save toggle
+    const saveBtn = document.getElementById('saveBtn');
+    saveBtn.addEventListener('click', ()=>{
+      const saved = localStorage.getItem('savedCoach')==='1';
+      localStorage.setItem('savedCoach', saved? '0':'1');
+      saveBtn.textContent = saved? '🔖 Save' : '✅ Saved';
+    });
+    if(localStorage.getItem('savedCoach')==='1'){ saveBtn.textContent='✅ Saved' }
+
+    // Share
+    document.getElementById('shareBtn').addEventListener('click', async ()=>{
+      const shareData = {title: document.title, text: 'Skating coach in Brooklyn', url: location.href};
+      try{ if(navigator.share){ await navigator.share(shareData) } else { await navigator.clipboard.writeText(location.href); alert('Link copied!') } }catch(e){}
+    });
+
+    // Contact form (demo only)
+    document.getElementById('bookForm').addEventListener('submit', ()=>{
+      document.getElementById('formNote').textContent = 'Thanks! Your inquiry has been captured (demo). We will reply shortly.';
+    });
+
+    // SMS button visibility (hide on desktop)
+    const smsBtn=document.getElementById('smsBtn');
+    if(!/Mobi|Android/i.test(navigator.userAgent)) smsBtn.style.display='none';
+
+    // Floating CTA scroll
+    document.getElementById('bookBtn').addEventListener('click', ()=>{
+      document.getElementById('contact').scrollIntoView({behavior:'smooth'});
+    });
+
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('revealed'); io.unobserve(e.target); } })
+    }, {threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+
+    // Init
+    document.getElementById('year').textContent = new Date().getFullYear();
+    renderHours();
+    updateOpenStatus();
+
+    // Structured data (LocalBusiness)
+    const ld = {
+      '@context':'https://schema.org', '@type':'LocalBusiness',
+      name:'Yuriy Mikheyev — Professional Figure Skating & Hockey Power Skating Coach',
+      telephone:'+1-646-409-6738',
+      address:{'@type':'PostalAddress', streetAddress:'3159 Flatbush Ave', addressLocality:'Brooklyn', addressRegion:'NY', postalCode:'11234', addressCountry:'US'},
+      areaServed:'Brooklyn, New York',
+      url: location.href,
+      openingHoursSpecification: Object.entries(BUSINESS.hours).map(([day, ranges])=>ranges.map(([s,e])=>({ '@type':'OpeningHoursSpecification', dayOfWeek: 'https://schema.org/'+day, opens: s+':00', closes: e+':00' }))).flat()
+    };
+    const script=document.createElement('script'); script.type='application/ld+json'; script.textContent=JSON.stringify(ld); document.head.appendChild(script);
+  </script>
+</body>
+</html>
