@@ -101,15 +101,12 @@
   .act {
     justify-content: center;
   }
-  .nav {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
+
+  /* Hide menu on mobile */
+  .nav nav {
+    display: none;
   }
-  .nav a.btn {
-    width: 100%;
-    text-align: center;
-  }
+
   .grid-3,
   .testi {
     grid-template-columns: 1fr;
@@ -130,6 +127,7 @@
     font-size: 15px;
   }
 }
+
 
     .gallery {
   display: flex;
